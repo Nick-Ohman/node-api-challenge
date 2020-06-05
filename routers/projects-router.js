@@ -19,6 +19,72 @@ router.get('/', (req, res) => {
     })
 })
 
+
+router.get('/:id', checkID, (req, res) => {
+    const id = req.params.id
+    Projects.get(id)
+    .then(project => {
+        res.status(200).json({
+            status: "success",
+            project: project
+        })
+    })
+})
+
+router.post('/', checkProjectBody, (req, res) => {
+    const newProject = req.body
+    Projects.insert(newProject)
+    .then(project =>{
+        res.status(201).json({
+            message: "Project Created Successfully",
+            project: project
+        })
+    })
+    .catch(error => {
+        res.status(500).json({
+            status: "failure",
+            error: error
+        })
+    })
+})
+
+router.put('/:id', checkID, checkProjectBody, (req, res) => {
+    const id = req.params.id
+    const updatedPro = req.body
+    Projects.update(id, updatedPro)
+    .then(project => {
+        res.status(201).json({
+            status: "success",
+            updatedProj: project
+        })
+    })
+    .catch(error => {
+        res.status(500).json({
+            status: "failure",
+            error: error
+        })
+    })
+})
+
+router.delete('/:id', checkID, (req, res)=> {
+    console.log("req.body");
+    Projects.remove(req.params.id)
+    .then(resp => {
+        if(resp === 1){
+            res.status(204).json({
+                status: "successfull",
+                message: "you successfully deleted the project"
+            })
+        } else {
+            res.status(500).json({
+                status: "failure",
+                error: "Could not delete resource"
+            })
+        }
+    })
+})
+
+
 // middleware
 
 function checkID(req, res, next){
