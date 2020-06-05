@@ -12,3 +12,17 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Go code!
 */
+const express = require('express');
+
+const server = express();
+server.use(express.json());
+
+PORT = 5002;
+
+server.get('/', (req, res) => {
+    res.status(200).json({
+        message: "sprint api"
+    })
+})
+
+server.listen(PORT,  console.log(`Server is running on http://localhost:${PORT}`))
