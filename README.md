@@ -40,14 +40,25 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+    routing with express and middleware
+
 - [ ] Describe Middleware?
+
+    its used to add features to expess, use it as an array of functions
 
 - [ ] Describe a Resource?
 
+    everything is a resource
+
 - [ ] What can the API return to help clients know if a request was successful?
+
+        a status code telling them it was successful
 
 - [ ] How can we partition our application into sub-applications?
 
+    by splitting our code into models, routers, and importing in what we need when we need it
+
+    
 ## Minimum Viable Product
 
 - [ ] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
