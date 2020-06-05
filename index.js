@@ -13,6 +13,8 @@ I need this code, but don't know where, perhaps should make some middleware, don
 Go code!
 */
 const express = require('express');
+const ProjectsRouter = require('./routers/projects-router.js');
+const ActionsRouter = require('./routers/actions-router.js');
 
 const server = express();
 server.use(express.json());
@@ -26,3 +28,6 @@ server.get('/', (req, res) => {
 })
 
 server.listen(PORT,  console.log(`Server is running on http://localhost:${PORT}`))
+
+server.use('/api/projects', ProjectsRouter);
+server.use('/api/projects', ActionsRouter);
